@@ -4,18 +4,10 @@ namespace Astrogoat\Locations\Http\Livewire\Models;
 
 use Astrogoat\Locations\Models\Location;
 use Helix\Lego\Http\Livewire\Models\Form;
-use Helix\Lego\Http\Livewire\Traits\CanBePublished;
-use Helix\Lego\Models\Contracts\Publishable;
-use Helix\Lego\Models\Footer;
 use Helix\Lego\Models\Model;
-use Helix\Lego\Models\Page;
-use Helix\Lego\Rules\SlugRule;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Str;
 
 class LocationForm extends Form
 {
-
     public Location $location;
 
     public function rules()
@@ -51,7 +43,6 @@ class LocationForm extends Form
     public function deleted()
     {
         return redirect()->to(route('lego.locations.index'));
-
     }
 
     public function render()
@@ -59,7 +50,7 @@ class LocationForm extends Form
         return view('locations::models.locations.form');
     }
 
-    public function getModel() : Model
+    public function getModel(): Model
     {
         return $this->location;
     }

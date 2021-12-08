@@ -3,6 +3,7 @@
 namespace Astrogoat\Locations;
 
 use Astrogoat\Locations\Http\Livewire\Models\LocationForm;
+use Astrogoat\Locations\Settings\LocationsSettings;
 use Helix\Fabrick\Icon;
 use Helix\Lego\Apps\App;
 use Helix\Lego\LegoManager;
@@ -11,7 +12,6 @@ use Helix\Lego\Menus\Menu;
 use Livewire\Livewire;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Astrogoat\Locations\Settings\LocationsSettings;
 
 class LocationsServiceProvider extends PackageServiceProvider
 {
@@ -21,7 +21,8 @@ class LocationsServiceProvider extends PackageServiceProvider
             ->name('locations')
             ->settings(LocationsSettings::class)
             ->menu(function (Menu $menu) {
-                $menu->addToGroup(Menu::MAIN_GROUPS['PRIMARY'],
+                $menu->addToGroup(
+                    Menu::MAIN_GROUPS['PRIMARY'],
                     Link::to(route('lego.locations.index'), 'Locations')
                         ->after('Products')
                         ->icon(Icon::LOCATION_MARKER)
