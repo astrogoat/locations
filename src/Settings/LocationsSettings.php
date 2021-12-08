@@ -2,8 +2,8 @@
 
 namespace Astrogoat\Locations\Settings;
 
-use Helix\Lego\Settings\AppSettings;
 use Astrogoat\Locations\Actions\LocationsAction;
+use Helix\Lego\Settings\AppSettings;
 
 class LocationsSettings extends AppSettings
 {

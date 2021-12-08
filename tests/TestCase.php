@@ -2,9 +2,9 @@
 
 namespace Astrogoat\Locations\Tests;
 
+use Astrogoat\Locations\LocationsServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Astrogoat\Locations\LocationsServiceProvider;
 
 class TestCase extends Orchestra
 {
