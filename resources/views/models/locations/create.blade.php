@@ -4,6 +4,7 @@
     <x-fab::layouts.page
         title="New location"
         :breadcrumbs="[
+            ['title' => 'Home', 'url' => '/admin'],
             ['title' => 'Locations', 'url' => route('lego.locations.index')],
             ['title' => 'New'],
         ]"

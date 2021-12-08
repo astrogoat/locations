@@ -4,6 +4,7 @@
     <x-fab::layouts.page
         title="{{ $location->store_name }}"
         :breadcrumbs="[
+            ['title' => 'Home', 'url' => '/admin'],
             ['title' => 'Locations', 'url' => route('lego.locations.index')],
             ['title' => $location->store_name],
         ]"

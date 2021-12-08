@@ -4,7 +4,7 @@
     <x-fab::layouts.page
         title="Locations"
         :breadcrumbs="[
-            ['title' => 'Home', 'url' => '/'],
+            ['title' => 'Home', 'url' => '/admin'],
             ['title' => 'Locations'],
         ]"
     >
