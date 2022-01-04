@@ -14,6 +14,12 @@ class LocationsController extends Controller
         return view('locations::models.locations.index', compact('locations'));
     }
 
+    public function show(Location $location) {
+        $location->load('sections');
+
+        return view('lego::sectionables.show', ['sectionable' => $location]);
+    }
+
     public function create()
     {
         return view('locations::models.locations.create');
@@ -22,5 +28,15 @@ class LocationsController extends Controller
     public function edit(Location $location)
     {
         return view('locations::models.locations.edit', compact('location'));
+    }
+
+    public function editor(Location $location, $editorView = 'editor')
+    {
+        $location->load('sections');
+
+        return view('lego::editor.editor', [
+            'sectionable' => $location,
+            'editorView' => $editorView,
+        ]);
     }
 }
