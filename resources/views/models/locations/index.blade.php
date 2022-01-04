@@ -29,9 +29,9 @@
                     <x-fab::lists.table.column align="right" slim>
                         <a href="{{ route('lego.locations.edit', $location) }}">Edit</a>
                     </x-fab::lists.table.column>
-{{--                    <x-fab::lists.table.column align="right">--}}
-{{--                        <a href="{{ route('lego.locations.editor', $location) }}">Customize</a>--}}
-{{--                    </x-fab::lists.table.column>--}}
+                    <x-fab::lists.table.column align="right">
+                        <a href="{{ route('lego.locations.editor', $location) }}">Customize</a>
+                    </x-fab::lists.table.column>
                 </x-fab::lists.table.row>
             @endforeach
         </x-fab::lists.table>
