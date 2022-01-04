@@ -7,7 +7,7 @@ use Helix\Lego\Settings\AppSettings;
 
 class LocationsSettings extends AppSettings
 {
-     public string $api_key;
+    public string $api_key;
     // public string $access_token;
 
     protected array $rules = [

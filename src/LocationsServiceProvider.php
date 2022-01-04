@@ -2,8 +2,8 @@
 
 namespace Astrogoat\Locations;
 
-use Astrogoat\Locations\Http\Livewire\Overlays\BrowseLocations;
 use Astrogoat\Locations\Http\Livewire\Models\LocationForm;
+use Astrogoat\Locations\Http\Livewire\Overlays\BrowseLocations;
 use Astrogoat\Locations\Settings\LocationsSettings;
 use Helix\Fabrick\Icon;
 use Helix\Lego\Apps\App;
@@ -31,8 +31,8 @@ class LocationsServiceProvider extends PackageServiceProvider
             })
             ->resources([
                 'css' => [
-                    '/vendor/locations/css/locations.css'
-                ]
+                    '/vendor/locations/css/locations.css',
+                ],
             ])
             ->migrations([
                 __DIR__ . '/../database/migrations',
@@ -58,7 +58,7 @@ class LocationsServiceProvider extends PackageServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__ . '/../public' => public_path('vendor/locations')
+                __DIR__ . '/../public' => public_path('vendor/locations'),
             ], 'locations-assets');
         }
 

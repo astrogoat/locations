@@ -1,11 +1,12 @@
 <?php
+
 namespace Astrogoat\Locations\Bricks;
 
 use Helix\Lego\Bricks\Brick;
 use Helix\Lego\Bricks\ValueObjects\BrickValueObject;
 
-class Location extends Brick {
-
+class Location extends Brick
+{
     public function hydrate($value): BrickValueObject
     {
         return new LocationValueObject($value);
@@ -16,7 +17,7 @@ class Location extends Brick {
         return $this->default;
     }
 
-    public function brickView() : string
+    public function brickView(): string
     {
         return 'locations::bricks.location';
     }

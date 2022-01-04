@@ -14,7 +14,8 @@ class LocationsController extends Controller
         return view('locations::models.locations.index', compact('locations'));
     }
 
-    public function show(Location $location) {
+    public function show(Location $location)
+    {
         $location->load('sections');
 
         return view('lego::sectionables.show', ['sectionable' => $location]);

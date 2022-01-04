@@ -7,9 +7,9 @@ use Helix\Lego\Bricks\ValueObjects\BrickValueObject;
 class LocationValueObject extends BrickValueObject
 {
     protected $cache = [];
+
     public function __construct(protected $value)
     {
-
     }
 
     public function getLocationModel()
@@ -26,7 +26,8 @@ class LocationValueObject extends BrickValueObject
     public function getValue()
     {
         return $this->value;
-        $selectedLocation =  \Astrogoat\Locations\Models\Location::find($this->value);
+        $selectedLocation = \Astrogoat\Locations\Models\Location::find($this->value);
+
         return $selectedLocation != null ? $selectedLocation->store_name : '';
     }
 

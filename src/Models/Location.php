@@ -3,7 +3,6 @@
 namespace Astrogoat\Locations\Models;
 
 use Helix\Fabrick\Icon;
-use Helix\Lego\Models\Contracts\Publishable;
 use Helix\Lego\Models\Contracts\Sectionable;
 use Helix\Lego\Models\Model as LegoModel;
 use Helix\Lego\Models\Traits\HasSections;
@@ -22,12 +21,12 @@ class Location extends LegoModel implements Sectionable
         return Icon::EYE;
     }
 
-    public static function getStoreKeyName() : string
+    public static function getStoreKeyName(): string
     {
         return 'store_name';
     }
 
-    public static function getAddressKeyName() : string
+    public static function getAddressKeyName(): string
     {
         return 'store_address';
     }
@@ -46,7 +45,7 @@ class Location extends LegoModel implements Sectionable
         return 'store_name';
     }
 
-    public function getSlugOptions() : SlugOptions
+    public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
             ->generateSlugsFrom($this->getDisplayKeyName())

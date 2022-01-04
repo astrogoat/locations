@@ -4,9 +4,6 @@ namespace Astrogoat\Locations\Http\Livewire\Overlays;
 
 use Astrogoat\Locations\Models\Location;
 use Helix\Lego\Http\Livewire\Modal;
-use Helix\Lego\Lego;
-use Helix\Lego\Models\Contracts\Publishable;
-use Illuminate\Support\Str;
 
 class BrowseLocations extends Modal
 {

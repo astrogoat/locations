@@ -85,7 +85,8 @@ class LocationForm extends Form
         return Footer::all()->pluck('title', 'id');
     }
 
-    public function setLatLng($address, $lat, $lng) {
+    public function setLatLng($address, $lat, $lng)
+    {
         $this->location->store_address = $address;
         $this->location->lat = $lat;
         $this->location->lng = $lng;
