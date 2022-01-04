@@ -2,6 +2,7 @@
 
 namespace Astrogoat\Locations;
 
+use Astrogoat\Locations\Http\Livewire\Overlays\BrowseLocations;
 use Astrogoat\Locations\Http\Livewire\Models\LocationForm;
 use Astrogoat\Locations\Settings\LocationsSettings;
 use Helix\Fabrick\Icon;
@@ -28,6 +29,11 @@ class LocationsServiceProvider extends PackageServiceProvider
                         ->icon(Icon::LOCATION_MARKER)
                 );
             })
+            ->resources([
+                'css' => [
+                    '/vendor/locations/css/locations.css'
+                ]
+            ])
             ->migrations([
                 __DIR__ . '/../database/migrations',
                 __DIR__ . '/../database/migrations/settings',
@@ -50,6 +56,13 @@ class LocationsServiceProvider extends PackageServiceProvider
 
     public function bootingPackage()
     {
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__ . '/../public' => public_path('vendor/locations')
+            ], 'locations-assets');
+        }
+
         Livewire::component('astrogoat.locations.location-form', LocationForm::class);
+        Livewire::component('astrogoat.locations.browse-locations', BrowseLocations::class);
     }
 }
