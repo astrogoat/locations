@@ -1,6 +1,4 @@
-
 <div x-data="googleApi()">
-
     <x-fab::layouts.main-with-aside>
     <x-fab::layouts.panel>
         <x-fab::forms.input
@@ -130,6 +128,10 @@
 </x-fab::layouts.main-with-aside>
 
 </div>
+
+@push('styles')
+    <link href="{{ asset('vendor/locations/css/locations.css') }}" rel="stylesheet">
+@endpush
 
 <script>
     function googleApi() {
