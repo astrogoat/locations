@@ -16,15 +16,15 @@ class LocationForm extends Form
     public function rules()
     {
         return [
-            'location.store_name' => 'required',
+            'location.name' => 'required',
             'location.slug' => [new SlugRule($this->location)],
-            'location.partner_name' => 'required',
-            'location.store_address' => 'required',
-            'location.store_contact_phone_number' => 'required',
-            'location.store_display_phone_number' => 'required',
-            'location.store_hours' => 'required',
-            'location.lat' => 'required',
-            'location.lng' => 'required',
+            'location.address' => 'required',
+            'location.contact_phone_number' => 'nullable',
+            'location.display_phone_number' => 'nullable',
+            'location.open_hours' => 'nullable',
+            'location.lat' => 'nullable',
+            'location.lng' => 'nullable',
+            'location.place_id' => 'nullable',
             'location.layout' => 'nullable',
             'location.footer_id' => 'nullable',
         ];
@@ -46,7 +46,7 @@ class LocationForm extends Form
     {
         parent::updating($property, $value);
 
-        if ($property == 'location.store_name' && ! $this->location->exists) {
+        if ($property == 'location.name' && ! $this->location->exists) {
             $this->location->slug = Str::slug($value);
         }
     }
@@ -85,10 +85,11 @@ class LocationForm extends Form
         return Footer::all()->pluck('title', 'id');
     }
 
-    public function setLatLng($address, $lat, $lng)
+    public function setLatLng($address, $lat, $lng, $place_id)
     {
         $this->location->store_address = $address;
         $this->location->lat = $lat;
         $this->location->lng = $lng;
+        $this->location->place_id = $place_id;
     }
 }
