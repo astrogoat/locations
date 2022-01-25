@@ -26,10 +26,10 @@
                                 <!-- Extend touch target to entire panel -->
                                 <span class="absolute inset-0" aria-hidden="true"></span>
                                 <p class="text-sm font-medium text-gray-900">
-                                    {{ $location->store_name }}
+                                    {{ $location->name }}
                                 </p>
                                 <p class="text-sm text-gray-500 truncate">
-                                    {{ $location->store_address }}
+                                    {{ $location->address }}
                                 </p>
                             </a>
                         </div>

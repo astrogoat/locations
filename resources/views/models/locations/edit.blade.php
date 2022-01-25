@@ -2,11 +2,11 @@
 
 @section('content')
     <x-fab::layouts.page
-        title="{{ $location->store_name }}"
+        title="{{ $location->name }}"
         :breadcrumbs="[
             ['title' => 'Home', 'url' => '/admin'],
             ['title' => 'Locations', 'url' => route('lego.locations.index')],
-            ['title' => $location->store_name],
+            ['title' => $location->name],
         ]"
         x-data=""
         x-on:keydown.meta.s.window.prevent="$wire.call('saving')" {{-- For Mac --}}

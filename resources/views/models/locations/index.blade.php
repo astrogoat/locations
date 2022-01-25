@@ -23,7 +23,7 @@
             @foreach($locations as $location)
                 <x-fab::lists.table.row :odd="$loop->odd">
                     <x-fab::lists.table.column full primary>
-                        <a href="{{ route('lego.locations.edit', $location) }}">{{ $location->store_name }}</a>
+                        <a href="{{ route('lego.locations.edit', $location) }}">{{ $location->name }}</a>
                     </x-fab::lists.table.column>
                     <x-fab::lists.table.column align="right">{{ $location->updated_at->toFormattedDateString() }}</x-fab::lists.table.column>
                     <x-fab::lists.table.column align="right" slim>
