@@ -30,3 +30,7 @@
         @endif
     </div>
 </div>
+
+@push('styles')
+    <link href="{{ asset('vendor/locations/css/locations.css') }}" rel="stylesheet">
+@endpush

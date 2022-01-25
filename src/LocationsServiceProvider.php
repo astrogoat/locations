@@ -33,10 +33,8 @@ class LocationsServiceProvider extends PackageServiceProvider
                         ->icon(Icon::LOCATION_MARKER)
                 );
             })
-            ->resources([
-                'css' => [
-                    '/vendor/locations/css/locations.css',
-                ],
+            ->publishOnInstall([
+                'locations-assets',
             ])
             ->migrations([
                 __DIR__ . '/../database/migrations',

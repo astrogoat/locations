@@ -40,3 +40,7 @@
     </nav>
 
 </x-fab::overlays.simple>
+
+@push('styles')
+    <link href="{{ asset('vendor/locations/css/locations.css') }}" rel="stylesheet">
+@endpush

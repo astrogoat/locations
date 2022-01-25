@@ -30,11 +30,6 @@ class LocationForm extends Form
         ];
     }
 
-    public function save()
-    {
-        $this->location->save();
-    }
-
     public function saved()
     {
         if ($this->location->wasRecentlyCreated) {
@@ -58,11 +53,6 @@ class LocationForm extends Form
         if ($property == 'location.footer_id' && ! $value) {
             $this->location->footer_id = null;
         }
-    }
-
-    public function delete()
-    {
-        $this->location->delete();
     }
 
     public function deleted()

@@ -1,5 +1,9 @@
 @extends('lego::layouts.lego')
 
+@push('styles')
+    <link href="{{ asset('vendor/locations/css/locations.css') }}" rel="stylesheet">
+@endpush
+
 @section('content')
     <x-fab::layouts.page
         title="Locations"

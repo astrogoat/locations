@@ -161,7 +161,9 @@
     </x-slot>
 
 </x-fab::layouts.main-with-aside>
-
+    @push('styles')
+        <link href="{{ asset('vendor/locations/css/locations.css') }}" rel="stylesheet">
+    @endpush
     <script>
         function googleApi() {
             return {
