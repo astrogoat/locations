@@ -23,7 +23,7 @@ class LocationsServiceProvider extends PackageServiceProvider
             ->name('locations')
             ->settings(LocationsSettings::class)
             ->models([
-                Location::class
+                Location::class,
             ])
             ->menu(function (Menu $menu) {
                 $menu->addToGroup(

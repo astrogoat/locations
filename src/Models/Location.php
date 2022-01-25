@@ -55,6 +55,4 @@ class Location extends LegoModel implements Sectionable, Metafieldable
             ->saveSlugsTo('slug')
             ->doNotGenerateSlugsOnUpdate();
     }
-
-
 }
