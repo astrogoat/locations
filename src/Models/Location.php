@@ -3,18 +3,21 @@
 namespace Astrogoat\Locations\Models;
 
 use Helix\Fabrick\Icon;
+use Helix\Lego\Models\Contracts\Metafieldable;
 use Helix\Lego\Models\Contracts\Sectionable;
 use Helix\Lego\Models\Model as LegoModel;
+use Helix\Lego\Models\Traits\HasMetafields;
 use Helix\Lego\Models\Traits\HasSections;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
-class Location extends LegoModel implements Sectionable
+class Location extends LegoModel implements Sectionable, Metafieldable
 {
     use HasSections;
     use HasSlug;
+    use HasMetafields;
 
-//    protected $table = 'locations';
+    protected $table = 'locations';
 
     public static function icon(): string
     {
@@ -23,12 +26,12 @@ class Location extends LegoModel implements Sectionable
 
     public static function getStoreKeyName(): string
     {
-        return 'store_name';
+        return 'name';
     }
 
     public static function getAddressKeyName(): string
     {
-        return 'store_address';
+        return 'address';
     }
 
     public function editorShowViewRoute(string $layout = null): string
@@ -42,7 +45,7 @@ class Location extends LegoModel implements Sectionable
 
     public static function getDisplayKeyName(): string
     {
-        return 'store_name';
+        return 'name';
     }
 
     public function getSlugOptions(): SlugOptions
@@ -52,4 +55,6 @@ class Location extends LegoModel implements Sectionable
             ->saveSlugsTo('slug')
             ->doNotGenerateSlugsOnUpdate();
     }
+
+
 }
