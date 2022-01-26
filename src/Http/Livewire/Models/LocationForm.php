@@ -77,7 +77,7 @@ class LocationForm extends Form
 
     public function setLatLng($address, $lat, $lng, $place_id)
     {
-        $this->location->store_address = $address;
+        $this->location->address = $address;
         $this->location->lat = $lat;
         $this->location->lng = $lng;
         $this->location->place_id = $place_id;
