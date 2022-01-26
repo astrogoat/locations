@@ -22,8 +22,8 @@ class LocationsServiceProvider extends PackageServiceProvider
             ->name('locations')
             ->settings(LocationsSettings::class)
             ->menu(function (Menu $menu) {
-                $menu->addToGroup(
-                    Menu::MAIN_GROUPS['PRIMARY'],
+                $menu->addToSection(
+                    Menu::MAIN_SECTIONS['PRIMARY'],
                     Link::to(route('lego.locations.index'), 'Locations')
                         ->after('Products')
                         ->icon(Icon::LOCATION_MARKER)
