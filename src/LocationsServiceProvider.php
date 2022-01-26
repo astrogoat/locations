@@ -4,6 +4,7 @@ namespace Astrogoat\Locations;
 
 use Astrogoat\Locations\Http\Livewire\Models\LocationForm;
 use Astrogoat\Locations\Http\Livewire\Overlays\BrowseLocations;
+use Astrogoat\Locations\Models\Location;
 use Astrogoat\Locations\Settings\LocationsSettings;
 use Helix\Fabrick\Icon;
 use Helix\Lego\Apps\App;
@@ -21,6 +22,9 @@ class LocationsServiceProvider extends PackageServiceProvider
         return $app
             ->name('locations')
             ->settings(LocationsSettings::class)
+            ->models([
+                Location::class,
+            ])
             ->menu(function (Menu $menu) {
                 $menu->addToSection(
                     Menu::MAIN_SECTIONS['PRIMARY'],
