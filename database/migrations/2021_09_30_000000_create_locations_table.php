@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('place_id')->nullable();
             $table->string('layout')->nullable();
             $table->unsignedInteger('footer_id')->nullable();
+            $table->timestamp('published_at')->nullable();
             $table->timestamps();
 
             $table->foreign('footer_id')->references('id')->on('footers');

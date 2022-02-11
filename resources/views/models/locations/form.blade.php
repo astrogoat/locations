@@ -9,8 +9,8 @@
     x-on:keydown.meta.s.window.prevent="$wire.call('save')" {{-- For Mac --}}
     x-on:keydown.ctrl.s.window.prevent="$wire.call('save')" {{-- For PC  --}}
 >
-    @if($location->exists)
-        <x-slot name="actions">
+    <x-slot name="actions">
+        @if($location->exists)
             <x-fab::elements.button
                 type="link"
                 :url="Route::getRoutes()->getByName('locations.show')->getPrefix() . '/' . $location->slug"
@@ -36,8 +36,9 @@
                 />
                 Customize
             </x-fab::elements.button>
-        </x-slot>
-    @endif
+        @endif
+        @include('lego::models._includes.published-state-select')
+    </x-slot>
 {{--<div x-data="googleApi()">--}}
     <x-lego::feedback.errors class="mb-4" />
 

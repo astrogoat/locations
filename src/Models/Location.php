@@ -4,21 +4,26 @@ namespace Astrogoat\Locations\Models;
 
 use Helix\Fabrick\Icon;
 use Helix\Lego\Models\Contracts\Metafieldable;
+use Helix\Lego\Models\Contracts\Publishable;
 use Helix\Lego\Models\Contracts\Searchable;
 use Helix\Lego\Models\Contracts\Sectionable;
 use Helix\Lego\Models\Model as LegoModel;
+use Helix\Lego\Models\Traits\CanBePublished;
 use Helix\Lego\Models\Traits\HasMetafields;
 use Helix\Lego\Models\Traits\HasSections;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
-class Location extends LegoModel implements Sectionable, Metafieldable, Searchable
+class Location extends LegoModel implements Sectionable, Metafieldable, Publishable, Searchable
 {
     use HasSections;
     use HasSlug;
     use HasMetafields;
+    use CanBePublished;
 
     protected $table = 'locations';
+
+    protected $dates = ['published_at'];
 
     public static function icon(): string
     {
@@ -85,5 +90,10 @@ class Location extends LegoModel implements Sectionable, Metafieldable, Searchab
     public function searchableRoute() : string
     {
         return route('lego.locations.edit', $this);
+    }
+
+    public function getPublishedRoute() : string
+    {
+        return route('locations.show', $this);
     }
 }

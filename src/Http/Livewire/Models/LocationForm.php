@@ -4,6 +4,8 @@ namespace Astrogoat\Locations\Http\Livewire\Models;
 
 use Astrogoat\Locations\Models\Location;
 use Helix\Lego\Http\Livewire\Models\Form;
+use Helix\Lego\Http\Livewire\Traits\CanBePublished;
+use Helix\Lego\Models\Contracts\Publishable;
 use Helix\Lego\Models\Footer;
 use Helix\Lego\Models\Model;
 use Helix\Lego\Rules\SlugRule;
@@ -11,6 +13,8 @@ use Illuminate\Support\Str;
 
 class LocationForm extends Form
 {
+    use CanBePublished;
+
     public Location $location;
 
     public function rules()
@@ -26,6 +30,7 @@ class LocationForm extends Form
             'location.place_id' => 'nullable',
             'location.layout' => 'required',
             'location.footer_id' => 'nullable',
+            'location.published_at' => 'nullable',
         ];
     }
 
@@ -75,5 +80,10 @@ class LocationForm extends Form
         $this->location->lat = $lat;
         $this->location->lng = $lng;
         $this->location->place_id = $place_id;
+    }
+
+    public function getPublishableModel() : Publishable
+    {
+        return $this->location;
     }
 }
