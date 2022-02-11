@@ -22,6 +22,7 @@ class LocationForm extends Form
         return [
             'location.name' => 'required',
             'location.slug' => [new SlugRule($this->location)],
+            'location.indexable' => 'nullable',
             'location.address' => 'nullable',
             'location.contact_phone_number' => 'nullable',
             'location.display_phone_number' => 'nullable',
@@ -32,6 +33,14 @@ class LocationForm extends Form
             'location.footer_id' => 'nullable',
             'location.published_at' => 'nullable',
         ];
+    }
+
+    public function mounted()
+    {
+        if (! $this->location->exists) {
+            $this->location->indexable = true;
+            $this->location->layout = array_key_first(siteLayouts());
+        }
     }
 
     public function saved()

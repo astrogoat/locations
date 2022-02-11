@@ -12,6 +12,7 @@ return new class extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('slug');
+            $table->boolean('indexable');
             $table->string('address')->nullable();
             $table->string('display_phone_number')->nullable();
             $table->string('contact_phone_number')->nullable();

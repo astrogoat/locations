@@ -39,7 +39,7 @@
         @endif
         @include('lego::models._includes.published-state-select')
     </x-slot>
-{{--<div x-data="googleApi()">--}}
+
     <x-lego::feedback.errors class="mb-4" />
 
     <x-fab::layouts.main-with-aside>
@@ -104,6 +104,15 @@
             />
         </x-fab::layouts.panel>
 
+        <x-fab::layouts.panel heading="SEO">
+            <x-fab::forms.checkbox
+                id="should_index"
+                label="Should be indexed"
+                wire:model="location.indexable"
+                help="If checked this will allow search engines (i.e. Google or Bing) to index the page so it can be found when searching on said search engine."
+            />
+        </x-fab::layouts.panel>
+
         @include('lego::metafields.define', ['metafieldable' => $location])
 
         <x-slot name="aside">
@@ -114,7 +123,6 @@
                     help="The base layout for the page."
                 >
                     <option disabled>-- Select layout</option>
-                    <option value="">Default</option>
                     @foreach(siteLayouts() as $key => $layout)
                         <option value="{{ $key }}">{{ $layout }}</option>
                     @endforeach
@@ -148,32 +156,31 @@
     </x-fab::layouts.main-with-aside>
 </x-fab::layouts.page>
 
-    @push('styles')
-        <link href="{{ asset('vendor/locations/css/locations.css') }}" rel="stylesheet">
-    @endpush
+@push('styles')
+    <link href="{{ asset('vendor/locations/css/locations.css') }}" rel="stylesheet">
+@endpush
 
-    <script>
-        document.addEventListener('alpine:initializing', () => {
-            Alpine.data('googleApi', () => ({
-                loading: false,
-                error: '',
-                suggestions: [],
-                getSuggestions(value) {
-                    let address = value;
-                    address = address.replace(/\s+/g, '%20').replace(/\#/g, '');
+<script>
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('googleApi', () => ({
+            loading: false,
+            error: '',
+            suggestions: [],
+            getSuggestions(value) {
+                let address = value;
+                address = address.replace(/\s+/g, '%20').replace(/\#/g, '');
 
-                    let requestUrl = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key={{settings(\Astrogoat\Locations\Settings\LocationsSettings::class, 'api_key')}}";
+                let requestUrl = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key={{settings(\Astrogoat\Locations\Settings\LocationsSettings::class, 'api_key')}}";
 
-                    fetch(requestUrl)
-                        .then((res) => res.json())
-                        .then((res) => {
-                            if (res.status === 'OK') {
-                                this.suggestions = res.results;
-                            }
-                        });
-                }
-            }))
-        })
-    </script>
-</div>
+                fetch(requestUrl)
+                    .then((res) => res.json())
+                    .then((res) => {
+                        if (res.status === 'OK') {
+                            this.suggestions = res.results;
+                        }
+                    });
+            }
+        }))
+    })
+</script>
 
