@@ -18,14 +18,13 @@ class LocationForm extends Form
         return [
             'location.name' => 'required',
             'location.slug' => [new SlugRule($this->location)],
-            'location.address' => 'required',
+            'location.address' => 'nullable',
             'location.contact_phone_number' => 'nullable',
             'location.display_phone_number' => 'nullable',
-            'location.open_hours' => 'nullable',
             'location.lat' => 'nullable',
             'location.lng' => 'nullable',
             'location.place_id' => 'nullable',
-            'location.layout' => 'nullable',
+            'location.layout' => 'required',
             'location.footer_id' => 'nullable',
         ];
     }
