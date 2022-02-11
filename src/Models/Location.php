@@ -67,12 +67,12 @@ class Location extends LegoModel implements Sectionable, Metafieldable, Publisha
             ->doNotGenerateSlugsOnUpdate();
     }
 
-    public static function searchableIcon() : string
+    public static function searchableIcon(): string
     {
         return Icon::LOCATION_MARKER;
     }
 
-    public static function searchableIndexRoute() : string
+    public static function searchableIndexRoute(): string
     {
         return route('lego.locations.index');
     }
@@ -82,37 +82,37 @@ class Location extends LegoModel implements Sectionable, Metafieldable, Publisha
         return $query->where('name', 'LIKE', '%' . $value . '%');
     }
 
-    public function searchableName() : string
+    public function searchableName(): string
     {
         return $this->name;
     }
 
-    public function searchableDescription() : string
+    public function searchableDescription(): string
     {
         return $this->address ?: '';
     }
 
-    public function searchableRoute() : string
+    public function searchableRoute(): string
     {
         return route('lego.locations.edit', $this);
     }
 
-    public function getPublishedRoute() : string
+    public function getPublishedRoute(): string
     {
         return route('locations.show', $this);
     }
 
-    public function shouldIndex() : bool
+    public function shouldIndex(): bool
     {
         return $this->indexable;
     }
 
-    public function getIndexedRoute() : string
+    public function getIndexedRoute(): string
     {
         return $this->getPublishedRoute();
     }
 
-    public function getPublishedAtKey() : string
+    public function getPublishedAtKey(): string
     {
         return 'published_at';
     }

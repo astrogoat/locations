@@ -91,7 +91,7 @@ class LocationForm extends Form
         $this->location->place_id = $place_id;
     }
 
-    public function getPublishableModel() : Publishable
+    public function getPublishableModel(): Publishable
     {
         return $this->location;
     }
