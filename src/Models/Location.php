@@ -4,6 +4,7 @@ namespace Astrogoat\Locations\Models;
 
 use Helix\Fabrick\Icon;
 use Helix\Lego\Models\Contracts\Metafieldable;
+use Helix\Lego\Models\Contracts\Searchable;
 use Helix\Lego\Models\Contracts\Sectionable;
 use Helix\Lego\Models\Model as LegoModel;
 use Helix\Lego\Models\Traits\HasMetafields;
@@ -11,7 +12,7 @@ use Helix\Lego\Models\Traits\HasSections;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
-class Location extends LegoModel implements Sectionable, Metafieldable
+class Location extends LegoModel implements Sectionable, Metafieldable, Searchable
 {
     use HasSections;
     use HasSlug;
@@ -54,5 +55,35 @@ class Location extends LegoModel implements Sectionable, Metafieldable
             ->generateSlugsFrom($this->getDisplayKeyName())
             ->saveSlugsTo('slug')
             ->doNotGenerateSlugsOnUpdate();
+    }
+
+    public static function searchableIcon() : string
+    {
+        return Icon::LOCATION_MARKER;
+    }
+
+    public static function searchableIndexRoute() : string
+    {
+        return route('lego.locations.index');
+    }
+
+    public function scopeGlobalSearch($query, $value)
+    {
+        return $query->where('name', 'LIKE', '%' . $value . '%');
+    }
+
+    public function searchableName() : string
+    {
+        return $this->name;
+    }
+
+    public function searchableDescription() : string
+    {
+        return $this->address ?: '';
+    }
+
+    public function searchableRoute() : string
+    {
+        return route('lego.locations.edit', $this);
     }
 }

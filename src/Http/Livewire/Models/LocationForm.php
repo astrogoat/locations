@@ -54,11 +54,6 @@ class LocationForm extends Form
         }
     }
 
-    public function deleted()
-    {
-        return redirect()->to(route('lego.locations.index'));
-    }
-
     public function render()
     {
         return view('locations::models.locations.form');
