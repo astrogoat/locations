@@ -4,6 +4,8 @@ namespace Astrogoat\Locations\Http\Livewire\Models;
 
 use Astrogoat\Locations\Models\Location;
 use Helix\Lego\Http\Livewire\Models\Form;
+use Helix\Lego\Http\Livewire\Traits\CanBePublished;
+use Helix\Lego\Models\Contracts\Publishable;
 use Helix\Lego\Models\Footer;
 use Helix\Lego\Models\Model;
 use Helix\Lego\Rules\SlugRule;
@@ -11,6 +13,8 @@ use Illuminate\Support\Str;
 
 class LocationForm extends Form
 {
+    use CanBePublished;
+
     public Location $location;
 
     public function rules()
@@ -18,16 +22,25 @@ class LocationForm extends Form
         return [
             'location.name' => 'required',
             'location.slug' => [new SlugRule($this->location)],
-            'location.address' => 'required',
+            'location.indexable' => 'nullable',
+            'location.address' => 'nullable',
             'location.contact_phone_number' => 'nullable',
             'location.display_phone_number' => 'nullable',
-            'location.open_hours' => 'nullable',
             'location.lat' => 'nullable',
             'location.lng' => 'nullable',
             'location.place_id' => 'nullable',
-            'location.layout' => 'nullable',
+            'location.layout' => 'required',
             'location.footer_id' => 'nullable',
+            'location.published_at' => 'nullable',
         ];
+    }
+
+    public function mounted()
+    {
+        if (! $this->location->exists) {
+            $this->location->indexable = true;
+            $this->location->layout = array_key_first(siteLayouts());
+        }
     }
 
     public function saved()
@@ -55,11 +68,6 @@ class LocationForm extends Form
         }
     }
 
-    public function deleted()
-    {
-        return redirect()->to(route('lego.locations.index'));
-    }
-
     public function render()
     {
         return view('locations::models.locations.form');
@@ -81,5 +89,10 @@ class LocationForm extends Form
         $this->location->lat = $lat;
         $this->location->lng = $lng;
         $this->location->place_id = $place_id;
+    }
+
+    public function getPublishableModel(): Publishable
+    {
+        return $this->location;
     }
 }

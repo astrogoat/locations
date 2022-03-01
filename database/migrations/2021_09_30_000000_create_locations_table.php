@@ -11,16 +11,17 @@ return new class extends Migration
         Schema::create('locations', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('address');
-            $table->string('display_phone_number');
-            $table->string('contact_phone_number');
-            $table->text('open_hours')->nullable();
             $table->string('slug');
-            $table->double('lat');
-            $table->double('lng');
-            $table->string('place_id');
+            $table->boolean('indexable');
+            $table->string('address')->nullable();
+            $table->string('display_phone_number')->nullable();
+            $table->string('contact_phone_number')->nullable();
+            $table->double('lat')->nullable();
+            $table->double('lng')->nullable();
+            $table->string('place_id')->nullable();
             $table->string('layout')->nullable();
             $table->unsignedInteger('footer_id')->nullable();
+            $table->timestamp('published_at')->nullable();
             $table->timestamps();
 
             $table->foreign('footer_id')->references('id')->on('footers');

@@ -8,7 +8,7 @@
     <x-fab::layouts.page
         title="Locations"
         :breadcrumbs="[
-            ['title' => 'Home', 'url' => '/admin'],
+            ['title' => 'Home', 'url' => route('lego.dashboard')],
             ['title' => 'Locations'],
         ]"
     >
@@ -18,7 +18,7 @@
 
         <x-fab::lists.table>
             <x-slot name="headers">
-                <x-fab::lists.table.header>Store name</x-fab::lists.table.header>
+                <x-fab::lists.table.header>Name</x-fab::lists.table.header>
                 <x-fab::lists.table.header>Last updated</x-fab::lists.table.header>
                 <x-fab::lists.table.header :hidden="true">Edit</x-fab::lists.table.header>
                 <x-fab::lists.table.header :hidden="true">Customize</x-fab::lists.table.header>
