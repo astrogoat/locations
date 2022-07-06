@@ -58,6 +58,15 @@
             />
         </x-fab::layouts.panel>
 
+        <x-fab::layouts.panel heading="SEO">
+            <x-fab::forms.checkbox
+                id="should_index"
+                label="Should be indexed"
+                wire:model="location.indexable"
+                help="If checked this will allow search engines (i.e. Google or Bing) to index the page so it can be found when searching on said search engine."
+            />
+        </x-fab::layouts.panel>
+
         <x-fab::layouts.panel>
             <x-fab::forms.input
                 label="Contact phone number"
@@ -104,14 +113,6 @@
             />
         </x-fab::layouts.panel>
 
-        <x-fab::layouts.panel heading="SEO">
-            <x-fab::forms.checkbox
-                id="should_index"
-                label="Should be indexed"
-                wire:model="location.indexable"
-                help="If checked this will allow search engines (i.e. Google or Bing) to index the page so it can be found when searching on said search engine."
-            />
-        </x-fab::layouts.panel>
 
         @include('lego::metafields.define', ['metafieldable' => $location])
 
