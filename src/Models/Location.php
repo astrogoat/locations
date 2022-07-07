@@ -10,12 +10,11 @@ use Helix\Lego\Models\Contracts\Searchable;
 use Helix\Lego\Models\Contracts\Sectionable;
 use Helix\Lego\Models\Model as LegoModel;
 use Helix\Lego\Models\Traits\CanBePublished;
+use Helix\Lego\Models\Traits\HasFooter;
 use Helix\Lego\Models\Traits\HasMetafields;
 use Helix\Lego\Models\Traits\HasSections;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
-use Helix\Lego\Models\Traits\HasFooter;
-
 
 class Location extends LegoModel implements Sectionable, Metafieldable, Publishable, Searchable, Indexable
 {
