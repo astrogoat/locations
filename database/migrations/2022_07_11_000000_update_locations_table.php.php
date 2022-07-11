@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -15,10 +16,11 @@ return new class extends Migration
             $table->string('address')->change()->nullable();
             $table->string('display_phone_number')->change()->nullable();
             $table->string('contact_phone_number')->change()->nullable();
-            $table->double('lat')->change()->nullable();
-            $table->double('lng')->change()->nullable();
             $table->string('place_id')->change()->nullable();
         });
+
+        DB::statement('ALTER TABLE locations modify `lat` DOUBLE NULL');
+        DB::statement('ALTER TABLE locations modify `lng` DOUBLE NULL');
     }
 
     public function down()
@@ -30,9 +32,10 @@ return new class extends Migration
             $table->string('address')->change()->nullable(false);
             $table->string('display_phone_number')->change()->nullable(false);
             $table->string('contact_phone_number')->change()->nullable(false);
-            $table->double('lat')->change()->nullable(false);
-            $table->double('lng')->change()->nullable(false);
             $table->string('place_id')->change()->nullable(false);
         });
+
+        DB::statement('ALTER TABLE locations modify `lat` DOUBLE');
+        DB::statement('ALTER TABLE locations modify `lng` DOUBLE');
     }
 };
