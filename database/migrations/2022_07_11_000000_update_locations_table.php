@@ -12,7 +12,6 @@ return new class extends Migration
         Schema::table('locations', function (Blueprint $table) {
             // Add columns
             $table->boolean('indexable')->after('layout');
-            $table->text('open_hours')->after('place_id')->nullable();
             $table->timestamp('published_at')->after('footer_id')->nullable();
 
             // Change to make nullable

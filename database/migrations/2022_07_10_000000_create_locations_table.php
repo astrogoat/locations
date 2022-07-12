@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('address');
             $table->string('display_phone_number');
             $table->string('contact_phone_number');
+            $table->text('open_hours')->nullable();
             $table->double('lat');
             $table->double('lng');
             $table->string('place_id');
