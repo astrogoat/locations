@@ -22,7 +22,6 @@ class Location extends LegoModel implements Sectionable, Metafieldable, Publisha
     use HasSlug;
     use HasMetafields;
     use CanBePublished;
-    use CanBePublished;
     use HasFooter;
 
 
