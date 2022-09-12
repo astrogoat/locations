@@ -29,6 +29,7 @@ class LocationForm extends Form
             'location.lat' => 'nullable',
             'location.lng' => 'nullable',
             'location.place_id' => 'nullable',
+            'location.mattress_assortment' => 'required',
             'location.open_hours' => 'nullable',
             'location.layout' => 'required',
             'location.footer_id' => 'nullable',
