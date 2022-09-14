@@ -52,7 +52,7 @@
                 wire:model="location.mattress_assortment"
                 label="Mattress Assortment"
             >
-                <option value=""> -- Please select mattress assortment --</option>
+                <option value=""> -- No Helix Mattress --</option>
                 <option value="Limited Helix Mattress Assortment">Limited Helix Mattress Assortment</option>
                 <option value="Helix Mattresses Sold Here">Helix Mattresses Sold Here</option>
             </x-fab::forms.select>
