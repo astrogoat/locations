@@ -7,56 +7,38 @@ use Helix\Lego\Http\Livewire\Models\Form;
 use Helix\Lego\Http\Livewire\Traits\CanBePublished;
 use Helix\Lego\Models\Contracts\Publishable;
 use Helix\Lego\Models\Footer;
-use Helix\Lego\Models\Model;
 use Helix\Lego\Rules\SlugRule;
-use Illuminate\Support\Str;
 
 class LocationForm extends Form
 {
     use CanBePublished;
 
-    public Location $location;
-
     public function rules()
     {
         return [
-            'location.name' => 'required',
-            'location.slug' => [new SlugRule($this->location)],
-            'location.indexable' => 'nullable',
-            'location.address' => 'nullable',
-            'location.contact_phone_number' => 'nullable',
-            'location.display_phone_number' => 'nullable',
-            'location.lat' => 'nullable',
-            'location.lng' => 'nullable',
-            'location.place_id' => 'nullable',
-            'location.open_hours' => 'nullable',
-            'location.layout' => 'required',
-            'location.footer_id' => 'nullable',
-            'location.published_at' => 'nullable',
+            'model.name' => 'required',
+            'model.slug' => [new SlugRule($this->model)],
+            'model.indexable' => 'nullable',
+            'model.address' => 'nullable',
+            'model.contact_phone_number' => 'nullable',
+            'model.display_phone_number' => 'nullable',
+            'model.lat' => 'nullable',
+            'model.lng' => 'nullable',
+            'model.place_id' => 'nullable',
+            'model.open_hours' => 'nullable',
+            'model.layout' => 'required',
+            'model.footer_id' => 'nullable',
+            'model.published_at' => 'nullable',
         ];
     }
 
-    public function mounted()
+    public function mount($location = null)
     {
-        if (! $this->location->exists) {
-            $this->location->indexable = true;
-            $this->location->layout = array_key_first(siteLayouts());
-        }
-    }
+        $this->setModel($location);
 
-    public function saved()
-    {
-        if ($this->location->wasRecentlyCreated) {
-            return redirect()->to(route('lego.locations.edit', $this->location));
-        }
-    }
-
-    public function updating($property, $value)
-    {
-        parent::updating($property, $value);
-
-        if ($property == 'location.name' && ! $this->location->exists) {
-            $this->location->slug = Str::slug($value);
+        if (! $this->model->exists) {
+            $this->model->indexable = true;
+            $this->model->layout = array_key_first(siteLayouts());
         }
     }
 
@@ -65,18 +47,18 @@ class LocationForm extends Form
         parent::updated($property, $value);
 
         if ($property == 'location.footer_id' && ! $value) {
-            $this->location->footer_id = null;
+            $this->model->footer_id = null;
         }
     }
 
-    public function render()
+    public function view() : string
     {
-        return view('locations::models.locations.form');
+        return 'locations::models.locations.form';
     }
 
-    public function getModel(): Model
+    public function model() : string
     {
-        return $this->location;
+        return Location::class;
     }
 
     public function footers()
@@ -86,14 +68,14 @@ class LocationForm extends Form
 
     public function setLatLng($address, $lat, $lng, $place_id)
     {
-        $this->location->address = $address;
-        $this->location->lat = $lat;
-        $this->location->lng = $lng;
-        $this->location->place_id = $place_id;
+        $this->model->address = $address;
+        $this->model->lat = $lat;
+        $this->model->lng = $lng;
+        $this->model->place_id = $place_id;
     }
 
     public function getPublishableModel(): Publishable
     {
-        return $this->location;
+        return $this->model;
     }
 }
