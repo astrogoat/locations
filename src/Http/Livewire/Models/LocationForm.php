@@ -51,12 +51,12 @@ class LocationForm extends Form
         }
     }
 
-    public function view() : string
+    public function view(): string
     {
         return 'locations::models.locations.form';
     }
 
-    public function model() : string
+    public function model(): string
     {
         return Location::class;
     }

@@ -7,12 +7,12 @@ use Helix\Lego\Http\Livewire\Models\Index;
 
 class LocationIndex extends Index
 {
-    public function model() : string
+    public function model(): string
     {
         return Location::class;
     }
 
-    public function columns() : array
+    public function columns(): array
     {
         return [
             'name' => 'Name',
@@ -20,7 +20,7 @@ class LocationIndex extends Index
         ];
     }
 
-    public function mainSearchColumn() : string|false
+    public function mainSearchColumn(): string|false
     {
         return 'name';
     }
