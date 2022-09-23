@@ -10,36 +10,7 @@
     x-on:keydown.ctrl.s.window.prevent="$wire.call('save')" {{-- For PC  --}}
 >
     <x-slot name="actions">
-        @if($model->exists)
-            <x-fab::elements.button
-                type="link"
-                :url="Route::getRoutes()->getByName('locations.show')->getPrefix() . '/' . $model->slug"
-                target="_blank"
-            >
-                <x-fab::elements.icon
-                    icon="eye"
-                    type="solid"
-                    class="locations--ml-1 locations-mr-2 locations-h-5 locations-w-5"
-                />
-                View
-            </x-fab::elements.button>
-
-            <x-fab::elements.button
-                type="link"
-                :url="route('lego.locations.editor', $model)"
-                class="locations-ml-4"
-            >
-                <x-fab::elements.icon
-                    icon="adjustments"
-                    type="solid"
-                    class="locations--ml-1 locations-mr-2 locations-h-5 locations-w-5"
-                />
-                Customize
-            </x-fab::elements.button>
-
-            @include('lego::models._includes.replicate-action-select')
-        @endif
-        @include('lego::models._includes.published-state-select')
+        @include('lego::models._includes.forms.page-actions')
     </x-slot>
 
     <x-lego::feedback.errors class="mb-4" />
@@ -152,20 +123,6 @@
                     @endforeach
                 </x-fab::forms.select>
             </x-fab::layouts.panel>
-
-            @if($model->exists)
-                <x-fab::elements.button
-                    wire:click="delete"
-                    class="text-red-500"
-                >
-                    <x-fab::elements.icon
-                        icon="trash"
-                        type="solid"
-                        class="-ml-1 mr-2 h-5 w-5 text-red-500"
-                    />
-                    Delete location
-                </x-fab::elements.button>
-            @endif
         </x-slot>
     </x-fab::layouts.main-with-aside>
 </x-fab::layouts.page>
