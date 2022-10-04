@@ -3,6 +3,7 @@
 namespace Astrogoat\Locations;
 
 use Astrogoat\Locations\Http\Livewire\Models\LocationForm;
+use Astrogoat\Locations\Http\Livewire\Models\LocationIndex;
 use Astrogoat\Locations\Http\Livewire\Overlays\BrowseLocations;
 use Astrogoat\Locations\Models\Location;
 use Astrogoat\Locations\Settings\LocationsSettings;
@@ -65,6 +66,7 @@ class LocationsServiceProvider extends PackageServiceProvider
         }
 
         Livewire::component('astrogoat.locations.location-form', LocationForm::class);
+        Livewire::component('astrogoat.locations.http.livewire.models.location-index', LocationIndex::class);
         Livewire::component('astrogoat.locations.browse-locations', BrowseLocations::class);
     }
 }

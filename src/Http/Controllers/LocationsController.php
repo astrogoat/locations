@@ -21,16 +21,6 @@ class LocationsController extends Controller
         return view('lego::sectionables.show', ['sectionable' => $location]);
     }
 
-    public function create()
-    {
-        return view('locations::models.locations.create');
-    }
-
-    public function edit(Location $location)
-    {
-        return view('locations::models.locations.edit', compact('location'));
-    }
-
     public function editor(Location $location, $editorView = 'editor')
     {
         $location->load('sections');
