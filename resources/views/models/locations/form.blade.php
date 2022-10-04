@@ -51,7 +51,7 @@
                 <div x-show="!suggestions.length == 0" class="z-10 w-44 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700">
                     <ul class="py-1">
                         <template x-for="suggestion in suggestions">
-                            <li class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white" x-on:click="$wire.setLatLng(suggestion.formatted_address, suggestion.geometry.model.lat, suggestion.geometry.model.lng, suggestion.place_id); suggestions = [];" x-text="suggestion.formatted_address">
+                            <li class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white" x-on:click="$wire.setLatLng(suggestion.formatted_address, suggestion.geometry.location.lat, suggestion.geometry.location.lng, suggestion.place_id); suggestions = [];" x-text="suggestion.formatted_address">
                             </li>
                         </template>
                     </ul>
