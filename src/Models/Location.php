@@ -80,8 +80,7 @@ class Location extends LegoModel implements Sectionable, Metafieldable, Publisha
         return route('lego.locations.index');
     }
 
-
-    public static function getGlobalSearchableFields() : array
+    public static function getGlobalSearchableFields(): array
     {
         return ['title', 'slug'];
     }
