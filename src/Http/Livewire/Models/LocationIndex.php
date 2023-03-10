@@ -16,6 +16,7 @@ class LocationIndex extends Index
     {
         return [
             'name' => 'Name',
+            'slug' => "Slug",
             'updated_at' => 'Last updated',
         ];
     }
