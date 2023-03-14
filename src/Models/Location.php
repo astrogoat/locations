@@ -82,7 +82,7 @@ class Location extends LegoModel implements Sectionable, Metafieldable, Publisha
 
     public static function getGlobalSearchableFields(): array
     {
-        return ['title', 'slug'];
+        return ['name', 'slug'];
     }
 
     public function scopeGlobalSearch($query, $value)
