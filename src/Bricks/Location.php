@@ -7,11 +7,6 @@ use Helix\Lego\Bricks\ValueObjects\BrickValueObject;
 
 class Location extends Brick
 {
-    public function hydrate($value): BrickValueObject
-    {
-        return new LocationValueObject($value);
-    }
-
     public function getDefaults()
     {
         return $this->default;
