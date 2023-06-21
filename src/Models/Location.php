@@ -80,7 +80,6 @@ class Location extends LegoModel implements Sectionable, Metafieldable, Publisha
         return route('lego.locations.index');
     }
 
-   
     public function scopeGlobalSearch($query, $value)
     {
         $searchFields = auth()->user()
@@ -90,7 +89,7 @@ class Location extends LegoModel implements Sectionable, Metafieldable, Publisha
             ->get('payload')
             ->first()?->payload ?? ['name'];
 
-            
+
         foreach ($searchFields as $searchField) {
             $query->orWhere($searchField, 'LIKE', "%{$value}%");
         }
@@ -98,14 +97,13 @@ class Location extends LegoModel implements Sectionable, Metafieldable, Publisha
         return $query;
     }
 
-    public static function searchableFields() : array
+    public static function searchableFields(): array
     {
         return [
             'name' => 'Name',
             'slug' => 'Slug',
         ];
     }
-
 
     public function searchableName(): string
     {
