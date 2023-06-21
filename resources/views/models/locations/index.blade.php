@@ -31,13 +31,13 @@
         @foreach($models as $location)
             <x-fab::lists.table.row :odd="$loop->odd">
                 @if($this->shouldShowColumn('name'))
-                    <x-fab::lists.table.column primary textWrap="normal">
+                    <x-fab::lists.table.column primary text-wrap>
                         <a href="{{ route('lego.locations.edit', $location) }}">{{ $location->name }}</a>
                     </x-fab::lists.table.column>
                 @endif
 
                 @if($this->shouldShowColumn('slug'))
-                    <x-fab::lists.table.column textWrap="normal">
+                    <x-fab::lists.table.column text-wrap>
                         <a href="{{ route('lego.locations.edit', $location) }}">{{ $location->slug }}</a>
                     </x-fab::lists.table.column>
                 @endif
