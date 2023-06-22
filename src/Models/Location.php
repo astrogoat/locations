@@ -82,7 +82,27 @@ class Location extends LegoModel implements Sectionable, Metafieldable, Publisha
 
     public function scopeGlobalSearch($query, $value)
     {
-        return $query->where('name', 'LIKE', '%' . $value . '%');
+        $searchFields = auth()->user()
+            ->preferences()
+            ->where('group', 'global_search')
+            ->where('name', self::class)
+            ->get('payload')
+            ->first()?->payload ?? ['name'];
+
+
+        foreach ($searchFields as $searchField) {
+            $query->orWhere($searchField, 'LIKE', "%{$value}%");
+        }
+
+        return $query;
+    }
+
+    public static function searchableFields(): array
+    {
+        return [
+            'name' => 'Name',
+            'slug' => 'Slug',
+        ];
     }
 
     public function searchableName(): string
