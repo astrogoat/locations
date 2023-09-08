@@ -27,10 +27,7 @@ class Location extends LegoModel implements Sectionable, Metafieldable, Publisha
 
     public $casts = [
         'indexable' => 'boolean',
-    ];
-
-    protected $dates = [
-        'published_at',
+        'published_at' => 'datetime',
     ];
 
     public static function icon(): string
