@@ -85,7 +85,7 @@
             <x-fab::forms.input
                 wire:model="model.slug"
                 label="URL and handle (slug)"
-                addon="{{ url('') . Route::getRoutes()->getByName('locations.show')->getPrefix() . '/' }}"
+                :addon="$this->routePrefix('locations.show')"
                 help="The URL where this location can be viewed. Changing this will break any existing links users may have bookmarked."
                 :disabled="! $model->exists"
             />
@@ -154,4 +154,3 @@
         }))
     })
 </script>
-
