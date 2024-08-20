@@ -2,7 +2,6 @@
 
 namespace Astrogoat\Locations\Settings;
 
-use Astrogoat\Locations\Actions\LocationsAction;
 use Helix\Lego\Settings\AppSettings;
 
 class LocationsSettings extends AppSettings
@@ -12,7 +11,6 @@ class LocationsSettings extends AppSettings
     protected array $rules = [
          'api_key' => ['required'],
     ];
-
 
     public function description(): string
     {
