@@ -4,6 +4,7 @@ namespace Astrogoat\Locations\Models;
 
 use Helix\Fabrick\Icon;
 use Helix\Lego\Models\Contracts\Indexable;
+use Helix\Lego\Cache\Concerns\CanBeCached;
 use Helix\Lego\Models\Contracts\Metafieldable;
 use Helix\Lego\Models\Contracts\Publishable;
 use Helix\Lego\Models\Contracts\Searchable;
@@ -23,7 +24,7 @@ class Location extends LegoModel implements Sectionable, Metafieldable, Publisha
     use HasMetafields;
     use CanBePublished;
     use HasFooter;
-
+    use CanBeCached;
 
     public $casts = [
         'indexable' => 'boolean',
