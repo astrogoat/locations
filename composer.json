@@ -13,6 +13,11 @@
             "name": "Peter",
             "email": "oniicoder@gmail.com",
             "role": "Developer"
+        },
+        {
+            "name": "Laura Tonning",
+            "email": "github@tonning.dev",
+            "role": "Developer"
         }
     ],
     "repositories": [
@@ -23,7 +28,7 @@
     ],
     "require": {
         "php": "^8.0",
-        "astrogoat/strata": "^0.7.0",
+        "astrogoat/strata": "^0.8.0",
         "spatie/laravel-package-tools": "^1.4.3",
         "illuminate/contracts": "^8.37 || ^9.0|^10.0"
     },
@@ -53,7 +58,8 @@
     "config": {
         "sort-packages": true,
         "allow-plugins": {
-            "pestphp/pest-plugin": true
+            "pestphp/pest-plugin": true,
+            "vaimo/composer-patches": true
         }
     },
     "extra": {
