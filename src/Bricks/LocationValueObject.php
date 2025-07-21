@@ -6,34 +6,22 @@ use Helix\Lego\Bricks\ValueObjects\BrickValueObject;
 
 class LocationValueObject extends BrickValueObject
 {
-    protected $cache = [];
-
-    public function __construct(protected $value)
-    {
-    }
+    protected array $cache = [];
 
     public function getLocationModel()
     {
-        if (isset($this->cache[$this->value])) {
-            return $this->cache[$this->value];
+        if (isset($this->cache[$this->getValue()])) {
+            return $this->cache[$this->getValue()];
         }
 
-        $this->cache[$this->value] = \Astrogoat\Locations\Models\Location::find($this->value);
+        $this->cache[$this->getValue()] = \Astrogoat\Locations\Models\Location::find($this->getValue());
 
-        return $this->cache[$this->value];
-    }
-
-    public function getValue()
-    {
-        return $this->value;
-        $selectedLocation = \Astrogoat\Locations\Models\Location::find($this->value);
-
-        return $selectedLocation != null ? $selectedLocation->store_name : '';
+        return $this->cache[$this->getValue()];
     }
 
     public function forJavascript()
     {
-        return $this->getValue() ?? '';
+        return $this->value ?? '';
     }
 
     public function __toString()
